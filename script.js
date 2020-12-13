@@ -12,8 +12,8 @@ $.ajax({
         $("#city-title").text(cityName)
         //date showing in european way, figure out have to make month first than day, not other way around
         var date=new Date();
-        var val=date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
-        $("#today-date").text(val);
+        var val=(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
+		$("#today-date").text(val);
         
         console.log(cityName)
         console.log(response.main);
