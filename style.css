@@ -1,0 +1,35 @@
+#header{
+    background-color: rgb(37, 37, 37);
+    text-align: center;
+    
+}
+
+#title{
+    color: white;
+}
+
+#sidebar{
+    border: 1px, black;
+    outline-style: solid;
+    width: 25%;
+
+}
+
+#main{
+    border: 1px, black;
+    outline-style: solid;
+    width: 75%;
+}
+
+#search-div{
+    display: flex;
+}
+
+#search{
+    display: inline-block;
+}
+
+#searchBtn{
+    float: right;
+    width: 20%
+}
