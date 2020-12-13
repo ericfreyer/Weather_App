@@ -9,14 +9,19 @@ $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-        $("#city-title").text(cityName)
-        //date showing in european way, figure out have to make month first than day, not other way around
+        //city name
+        $("#city-title").text(response.name)
+        //date
         var date=new Date();
         var val=(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
 		$("#today-date").text(val);
-        
+        //weather icon
+        //temp
+        //humidity
+        //wind speed
+        //UV index where number has background color depending on how bad/good it is
         console.log(cityName)
-        console.log(response.main);
+        console.log(response.name);
     })
 
 })
