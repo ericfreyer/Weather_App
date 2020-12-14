@@ -53,13 +53,48 @@
 
 #today-date{
     float: auto;
-    display: inline-block
+    display: inline-block;
+    font-size: large;
+    font-style: oblique;
+    
 }
 
 #city-title{
     display: inline-block
 }
 
-#uv-index{
-    
+.span2{
+    width: 18%;
+    background-color: rgb(91, 99, 212);
+    float: left;
+    margin-right: 2%;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.uv-good {
+    background-color: green;
+    display: table
+}
+
+.uv-moderate {
+    background-color: rgb(151, 151, 6);
+    display: table
+}
+
+.uv-bad {
+    background-color: red;
+    display: table
+}
+
+#footer{
+    text-align: center;
+    display: none;
+}
+
+#icon{
+    width: 10%;
+    padding-left: 2%;
+    padding-top: 1%;
 }

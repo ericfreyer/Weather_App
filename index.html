@@ -26,22 +26,51 @@
             <div id="weather-info">
                 <h4 id="city-title"></h4>
                 <p id="today-date"></p>
+                <img id="icon">
                 <ul id="specs-list">
                     <li id="temp"></li>
                     <li id="humidity"></li>
                     <li id="wind-speed"></li>
-                    <li id="uv-index"></li>
+                    <li id="uv-index"><span></span></li>
                 </ul>
             </div>
-            <div id="forecast" class="row-fluid">
-                <div id="day-1" class="span2 offset1"></div>
-                <div id="day-2" class="span2"></div>
-                <div id="day-3" class="span2"></div>
-                <div id="day-4" class="span2"></div>
-                <div id="day-5" class="span2"></div>
+            <div id="forecast" class="row-fluid style=" style = "display: none;">
+                <p id=forecast-title>Five Day Forecast:</p>
+                <div id="day-1" class="span2">
+                    <p id=day1-date></p>
+                    <p id=day1-icon></p>
+                    <p id=day1-temp></p>
+                    <p id=day1-humidity></p>
+                </div>
+                <div id="day-2" class="span2">
+                    <p id=day2-date></p>
+                    <p id=day2-icon></p>
+                    <p id=day2-temp></p>
+                    <p id=day2-humidity></p>
+                </div>
+                <div id="day-3" class="span2">
+                    <p id=day3-date></p>
+                    <p id=day3-icon></p>
+                    <p id=day3-temp></p>
+                    <p id=day3-humidity></p>
+                </div>
+                <div id="day-4" class="span2">
+                    <p id=day4-date></p>
+                    <p id=day4-icon></p>
+                    <p id=day4-temp></p>
+                    <p id=day4-humidity></p>
+                </div>
+                <div id="day-5" class="span2">
+                    <p id=day5-date></p>
+                    <p id=day5-icon></p>
+                    <p id=day5-temp></p>
+                    <p id=day5-humidity></p>
+                </div>
             </div>
           </div>
         </div>
+        <footer id="footer">Icons made by <a href="https://www.flaticon.com/authors/zlatko-najdenovski" title="Zlatko Najdenovski">Zlatko Najdenovski</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></footer>
+
 
 
     <script src="script.js" type="text/javascript"></script>
