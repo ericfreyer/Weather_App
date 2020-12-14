@@ -31,10 +31,28 @@ method: "GET"
     if((response.weather[0].id) === 800){
         $("#icon").attr("src", "assets/sun.png")
     //cloudy
-    }else if ((response.weather[0].id) === (801 || 802 || 803)){
+    }else if ((response.weather[0].id) === 801 || 802 || 803){
         $("#icon").attr("src", "assets/cloudy.png")
     //cloud
+    }else if ((response.weather[0].id) === 804){
+        $("#icon").attr("src", "assets/cloud.png")
+    //snowing
+    }else if ((response.weather[0].id) === 600 || 601 || 602 || 611 || 612 || 613 || 615 || 616 || 620 || 621 || 622){
+        $("#icon").attr("src", "assets/snowing.png")
+    //rain
+    }else if ((response.weather[0].id) === 300 || 301 || 302 || 310 || 311 || 312 || 313 || 314 || 321 || 500 || 501 || 502 || 503 || 504 || 511 || 520 || 521 || 522 || 531){
+        $("#icon").attr("src", "assets/rain.png")
+    //wind
+    }else if ((response.wind.speed) > 24){
+        $("#icon").attr("src", "assets/wind.png")
+    //thunderstorm
+    }else if ((response.weather[0].id) === 200 || 201 || 202 || 210 || 211 || 212 || 221 || 230 || 231 || 232){
+        $("#icon").attr("src", "assets/storm.png")
+    }else if ((response.weather[0].id) === 701 || 711 || 721 || 741){
+        $("#icon").attr("src", "assets/haze.png")
     }
+    
+    
 
 
 
