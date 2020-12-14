@@ -33,18 +33,20 @@ method: "GET"
 
         $("#uv-index").text("UV Index: " + data.value);
         })
+
+        var queryFive = ("https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey)
+        $.ajax({
+            url: queryFive,
+            method: "GET"
+        }).then(function(day){
+        console.log(day)
+        })
+      
+
     })
   //$("#forecast").text("5 Day Forecast:");
-  var apiKey = "fc25d5821ff4fb33afe234fe4cfe9db1";
-  var cityName = $("#search").val()
-  var queryFive = ("https://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "&cnt=5&appid=" + apiKey)
-  $.ajax({
-      url: queryFive,
-      method: "GET"
-  }).then(function(day){
-  console.log(day)
-  })
 
+  
 
      
 
