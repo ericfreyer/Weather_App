@@ -12,13 +12,14 @@
     border: 1px, black;
     outline-style: solid;
     width: 25%;
-
+    display: inline-block
 }
 
 #main{
     border: 1px, black;
     outline-style: solid;
     width: 75%;
+    display: inline-block
 }
 
 #search-div{
@@ -44,4 +45,17 @@
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
+}
+
+#specs-list{
+    list-style: none
+}
+
+#today-date{
+    float: auto;
+    display: inline-block
+}
+
+#city-title{
+    display: inline-block
 }
