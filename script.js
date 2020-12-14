@@ -1,11 +1,12 @@
 
+//look into using https://github.com/datejs/Datejs for dates
 $("#Search-Btn").on("click", function() {
 
 var apiKey = "9c7c14eca6e16b6d4c30a7c992224a18";
 var cityName = $("#search").val()
 var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
 
-//ajax call
+//ajax call for current weather
 $.ajax({
 url: queryURL,
 method: "GET"
@@ -15,18 +16,13 @@ method: "GET"
     $("#city-title").text(response.name);
 
 
-
-
     //date
     var date=new Date();
     var val=(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
     $("#today-date").text(val);
     
 
-
-
-
-
+    //ICONS
     //sun
     if((response.weather[0].id) === 800){
         $("#icon").attr("src", "assets/sun.png")
@@ -53,10 +49,6 @@ method: "GET"
     }
     
     
-
-
-
-
     //temp
     var fahrenheit = (((((response.main.temp) - 273.15) * 9) / 5) + 32).toFixed(2);
     $("#temp").text("Temperature: " + (fahrenheit) + "°F");
@@ -64,7 +56,8 @@ method: "GET"
     $("#humidity").text("Humidity: " + (response.main.humidity) + "%");
     //wind speed
     $("#wind-speed").text("Wind-speed: " + (response.wind.speed) + " MPH");
-  
+
+        //AJAX for UV index
         var queryUV = ("http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid="+ apiKey);
 
         $.ajax({
@@ -81,7 +74,7 @@ method: "GET"
         })
         
     })   
-        //five day
+        //AJAX for five day forecast
         var queryFive = ("https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey)
         $.ajax({
             url: queryFive,
@@ -126,10 +119,10 @@ method: "GET"
       
 
    
-  //$("#forecast").text("5 Day Forecast:");
+
 
   
 
-     
+
 
 })
