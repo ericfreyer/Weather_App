@@ -6,36 +6,46 @@ var cityName = $("#search").val()
 var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
 //ajax call
 $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
+url: queryURL,
+method: "GET"
+}).then(function(response) {
     //city name
-    $("#city-title").text(response.name)
+    $("#city-title").text(response.name);
     //date
     var date=new Date();
     var val=(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
 	$("#today-date").text(val);
     //weather icon STILL NEED TO DO and UV index color
     //temp
-    var main = (response.main)
-    $("#temp").text("Temperature: " + (main.temp))
+    var main = (response.main);
+    $("#temp").text("Temperature: " + (main.temp));
     //humidity
-    $("#humidity").text("Humidity: " + (main.humidity))
+    $("#humidity").text("Humidity: " + (main.humidity));
     //wind speed
-    $("#wind-speed").text("Wind-speed: " + (response.wind.speed))
+    $("#wind-speed").text("Wind-speed: " + (response.wind.speed));
   
-        var queryURLUV = ("http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid="+ apiKey)
+        var queryUV = ("http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid="+ apiKey);
 
         $.ajax({
-        url: queryURLUV,
+        url: queryUV,
         method: "GET"
         }).then(function(data) {
-        console.log(data)
-        $("#uv-index").text("UV Index: " + data.value)
+
+        $("#uv-index").text("UV Index: " + data.value);
         })
+    })
+  //$("#forecast").text("5 Day Forecast:");
+  var apiKey = "fc25d5821ff4fb33afe234fe4cfe9db1";
+  var cityName = $("#search").val()
+  var queryFive = ("https://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "&cnt=5&appid=" + apiKey)
+  $.ajax({
+      url: queryFive,
+      method: "GET"
+  }).then(function(day){
+  console.log(day)
+  })
 
-  //$("#forecast").text("5 Day Forecast:")  
 
-    }) 
+     
 
 })

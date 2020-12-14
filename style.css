@@ -1,5 +1,5 @@
 #header{
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(58, 57, 57);
     text-align: center;
     
 }
@@ -58,4 +58,8 @@
 
 #city-title{
     display: inline-block
+}
+
+#uv-index{
+    
 }
