@@ -101,6 +101,21 @@ $("#Search-Btn").on("click", function() {
         $("#day5-humidity").text("Humidity: " + day.daily[5].humidity + "%")
 
 
+        var date1=new Date();
+        var val=(date1.getMonth()+1)+"/"+(date1.getDate()+1)+"/"+date1.getFullYear();
+        $("#day1-date").text(val)
+        var date2=new Date();
+        var val=(date2.getMonth()+1)+"/"+(date2.getDate()+2)+"/"+date2.getFullYear();
+        $("#day2-date").text(val)
+        var date3=new Date();
+        var val=(date3.getMonth()+1)+"/"+(date3.getDate()+3)+"/"+date3.getFullYear();
+        $("#day3-date").text(val)
+        var date4=new Date();
+        var val=(date4.getMonth()+1)+"/"+(date4.getDate()+4)+"/"+date4.getFullYear();
+        $("#day4-date").text(val)
+        var date5=new Date();
+        var val=(date5.getMonth()+1)+"/"+(date5.getDate()+1)+"/"+date5.getFullYear();
+        $("#day5-date").text(val)
 
 
         var dayTwo = day.daily[1];
