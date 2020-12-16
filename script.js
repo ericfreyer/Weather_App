@@ -1,15 +1,5 @@
-//do it all in one AJAX call with the second one!!!!!
-//look into using https://github.com/datejs/Datejs for dates
-function init(){
-    var storedCity = JSON.parse(localStorage.getItem("content"));
-    if (storedCity !== null) {
-        city = storedCity;}
-        var div = $("<button>").attr("id", "re-search").text(storedCity);
-        $("#sidebar").append(div);
-}
-init()
 $("#Search-Btn").on("click", function render() {
-    
+
     var apiKey = "9c7c14eca6e16b6d4c30a7c992224a18";
     var cityName = $("#search").val()
     var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
@@ -48,35 +38,32 @@ $("#Search-Btn").on("click", function render() {
             var rain = [300, 301, 302, 310, 311, 312, 313, 314, 321, 500, 501, 502, 503, 504, 511, 520, 521, 522, 531]
             var storm = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232]
             var haze = [701, 711, 721, 741]
-            
-         
 
-        //if id contains any number from array
-
-
+        var dayOneIcon = day.daily[0].weather[0].id
+        var dayOneWind = day.daily[0].wind_speed
         var dayOne = day.daily[0];
-        if(dayOne.weather[0].id === 800){
+        if(dayOneIcon === 800){
             $("#icon").attr("src", "assets/sun.png")
         //cloudy
-        }else if (cloudy.includes(dayOne.weather[0].id)){
+        }else if (cloudy.includes(dayOneIcon)){
             $("#icon").attr("src", "assets/cloudy.png")
         //cloud
-        }else if (dayOne.weather[0].id === 804){
+        }else if (dayOneIcon === 804){
             $("#icon").attr("src", "assets/cloud.png")
         //snowing
-        }else if (snowing.includes(dayOne.weather[0].id)){
+        }else if (snowing.includes(dayOneIcon)){
             $("#icon").attr("src", "assets/snowing.png")
         //rain
-        }else if (rain.includes(dayOne.weather[0].id)){
+        }else if (rain.includes(dayOneIcon)){
             $("#icon").attr("src", "assets/rain.png")
         //wind
         //thunderstorm
-        }else if (storm.includes(dayOne.weather[0].id)){
+        }else if (storm.includes(dayOneIcon)){
             $("#icon").attr("src", "assets/storm.png")
-        }else if(haze.includes(dayOne.weather[0].id)){
+        }else if(haze.includes(dayOneIcon)){
             $("#icon").attr("src", "assets/haze.png")
 
-        }else if ((dayOne.wind_speed) > 24){
+        }else if ((dayOneWind) > 24){
              $("#icon").attr("src", "assets/wind.png")}
 
 
@@ -127,7 +114,7 @@ $("#Search-Btn").on("click", function render() {
         var val=(date4.getMonth()+1)+"/"+(date4.getDate()+4)+"/"+date4.getFullYear();
         $("#day4-date").text(val)
         var date5=new Date();
-        var val=(date5.getMonth()+1)+"/"+(date5.getDate()+1)+"/"+date5.getFullYear();
+        var val=(date5.getMonth()+1)+"/"+(date5.getDate()+5)+"/"+date5.getFullYear();
         $("#day5-date").text(val)
 
 
@@ -276,27 +263,38 @@ $("#Search-Btn").on("click", function render() {
                             }else if ((dayOne.wind_speed) > 24){
                                  $("#day-icon5").attr("src", "assets/wind.png")}
                                 
+storeItem()    
 
-
-                                 storeItem()
+                                 
                                  
 
 
         })   
 
     })
+ 
+
+  
     var nameStorage = []
     nameStorage.push(cityName)
-
+//creating new array inside of the array
     function storeItem(){ 
+
+        nameStorage.push(JSON.parse(localStorage.getItem('content')))
         localStorage.setItem("content", JSON.stringify(nameStorage));
-        var storedCity = JSON.parse(localStorage.getItem("content"));
-        if (storedCity !== null) {
-            city = storedCity;}
+        JSON.parse(localStorage.getItem("content"));
+
+        for (let i = 0; i < nameStorage.length; i++) {
          var div = $("<button>").attr("id", "re-search").text(nameStorage);
          $("#sidebar").append(div);
-        console.log(storedCity)
+            
+        }
+
+
+
+
        }
+
 
 
 })
