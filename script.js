@@ -1,8 +1,26 @@
-$("#Search-Btn").on("click", function render() {
-
+$(document).ready(function () {
+      var nameStorage = []
+      JSON.parse(localStorage.getItem("content"))
+$("#Search-Btn").on("click", function (event) {
+     
     var apiKey = "9c7c14eca6e16b6d4c30a7c992224a18";
-    var cityName = $("#search").val()
+    var cityName = $("#search").val().trim()
     var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
+  
+    nameStorage.push(cityName)  
+    event.preventDefault()
+
+
+
+    function storeItem(){ 
+        localStorage.setItem("content", JSON.stringify(nameStorage));
+        var savedCities = JSON.parse(localStorage.getItem("content"));
+        if (nameStorage !== null){
+            nameStorage = savedCities
+        }  
+    }
+
+
 
 
     //ajax call for current weather
@@ -74,11 +92,11 @@ $("#Search-Btn").on("click", function render() {
         $("#humidity").text("Humidity: " + (dayOne.humidity) + "%");
         //wind speed
         $("#wind-speed").text("Wind-speed: " + (dayOne.wind_speed) + " MPH");
-
-        $("#uv-index").text("UV Index: " + dayOne.uvi);
-        if(dayOne.uvi < 2){
+         var dayOneUvi = dayOne.uvi
+        $("#uv-index").text("UV Index: " + dayOneUvi);
+        if(dayOneUvi < 2){
             $("#uv-index").attr("class", "uv-good")
-        }else if(dayOne.uvi > 2 < 8){
+        }else if(dayOneUvi > 2 < 8){
             $("#uv-index").attr("class", "uv-moderate")
         }else $("#uv-index").attr("class", "uv-bad")
         
@@ -263,38 +281,17 @@ $("#Search-Btn").on("click", function render() {
                             }else if ((dayOne.wind_speed) > 24){
                                  $("#day-icon5").attr("src", "assets/wind.png")}
                                 
-storeItem()    
 
+storeItem()
                                  
-                                 
+                                
 
 
         })   
-
+ 
     })
  
 
-  
-    var nameStorage = []
-    nameStorage.push(cityName)
-//creating new array inside of the array
-    function storeItem(){ 
-
-        nameStorage.push(JSON.parse(localStorage.getItem('content')))
-        localStorage.setItem("content", JSON.stringify(nameStorage));
-        JSON.parse(localStorage.getItem("content"));
-
-        for (let i = 0; i < nameStorage.length; i++) {
-         var div = $("<button>").attr("id", "re-search").text(nameStorage);
-         $("#sidebar").append(div);
-            
-        }
-
-
-
-
-       }
-
-
-
+ 
+}) 
 })
