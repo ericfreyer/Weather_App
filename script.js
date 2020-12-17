@@ -1,25 +1,44 @@
-$(document).ready(function () {
-      var nameStorage = []
-      JSON.parse(localStorage.getItem("content"))
-$("#Search-Btn").on("click", function (event) {
-     
-    var apiKey = "9c7c14eca6e16b6d4c30a7c992224a18";
-    var cityName = $("#search").val().trim()
-    var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
-  
-    nameStorage.push(cityName)  
-    event.preventDefault()
-
-
-
-    function storeItem(){ 
-        localStorage.setItem("content", JSON.stringify(nameStorage));
-        var savedCities = JSON.parse(localStorage.getItem("content"));
-        if (nameStorage !== null){
-            nameStorage = savedCities
-        }  
+    function getItem(){
+   JSON.parse(localStorage.getItem("content"))
+    var arrayOfValues = [];
+    for(var i in localStorage){
+        if(localStorage.hasOwnProperty(i)){
+            arrayOfValues.push(localStorage[i]);
+        }
+    } 
+    for (let i = 0; i < arrayOfValues.length; i++) {
+        var button = $("<button>").attr("id", "re-search").text(arrayOfValues)
+        $("#sidebar").append(button)
     }
 
+    }  
+$(document).ready(function () {
+    getItem()
+    var nameStorage = []
+
+
+
+
+$("#Search-Btn").on("click", function (event) {
+    var cityName = $("#search").val().trim()
+    var div = $("<button>").attr("id", "re-search").text(cityName);
+    $("#sidebar").append(div);
+  var apiKey = "9c7c14eca6e16b6d4c30a7c992224a18";
+  
+  var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
+
+  nameStorage.push(cityName)  
+  event.preventDefault()
+
+
+
+  function storeItem(){ 
+      localStorage.setItem("content", JSON.stringify(nameStorage));
+      var savedCities = JSON.parse(localStorage.getItem("content"));
+      if (nameStorage !== null){
+          nameStorage = savedCities
+      }  
+  }
 
 
 
