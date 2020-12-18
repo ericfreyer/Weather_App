@@ -1,17 +1,32 @@
+
+  
     function getItem(){
-   JSON.parse(localStorage.getItem("content"))
-    var arrayOfValues = [];
-    for(var i in localStorage){
-        if(localStorage.hasOwnProperty(i)){
-            arrayOfValues.push(localStorage[i]);
-        }
-    } 
-    for (let i = 0; i < arrayOfValues.length; i++) {
-        var button = $("<button>").attr("id", "re-search").text(arrayOfValues)
-        $("#sidebar").append(button)
-    }
+        var getItem = JSON.parse(localStorage.getItem("content"))
+         var arrayOfValues = [];
+
+
+         function newButton(){
+
+
+             for(var i in getItem){
+            
+             if(getItem.hasOwnProperty(i)){
+                 arrayOfValues.push(getItem[i]);
+             }}
+
+             for (let i = 0; i < arrayOfValues.length; i++) {
+
+
+                 var button = $("<button>").attr("class", "re-search").text(arrayOfValues[i])
+             $("#sidebar").append(button)
+             };
+                  
+            console.log(arrayOfValues)
+         } 
+         newButton()
 
     }  
+
 $(document).ready(function () {
     getItem()
     var nameStorage = []
@@ -20,6 +35,7 @@ $(document).ready(function () {
 
 
 $("#Search-Btn").on("click", function (event) {
+
     var cityName = $("#search").val().trim()
     var div = $("<button>").attr("id", "re-search").text(cityName);
     $("#sidebar").append(div);
