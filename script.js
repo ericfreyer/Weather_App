@@ -10,11 +10,16 @@ var nameStorage = []
 
 
 
-$("#Search-Btn").on("click", function (event) {
+$("#Search-Btn").on("click", function render(event) {
     
 var cityName = $("#search").val().trim()
 var div = $("<button>").attr("class", "re-search").text(cityName);
 $("#sidebar").append(div);
+
+
+
+
+
 var apiKey = "9c7c14eca6e16b6d4c30a7c992224a18";
 
 var queryURL = ("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey)
@@ -332,6 +337,7 @@ function getItem(){
         console.log(arrayOfValues)
      } 
      newButton()
+
 
 } 
 })
