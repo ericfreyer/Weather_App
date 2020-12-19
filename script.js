@@ -25,7 +25,8 @@ $(document).ready(function () {
       var savedCities = JSON.parse(localStorage.getItem("content"));
       if (nameStorage !== null){
           nameStorage = savedCities
-      }  
+      } 
+      
     }
     
     
@@ -290,19 +291,18 @@ $(document).ready(function () {
                                 
     
     storeItem()
-                                
+                        
                                 
     
     
         })   
     
     })
-    
-    
+
     
     })
     
-    
+
     function getItem(){
         var getItem = JSON.parse(localStorage.getItem("content"))
          var arrayOfValues = [];
@@ -328,6 +328,6 @@ $(document).ready(function () {
             console.log(arrayOfValues)
          } 
          newButton()
-    
+
     } 
     })
